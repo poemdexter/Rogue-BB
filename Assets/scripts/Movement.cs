@@ -4,8 +4,12 @@ using System.Collections;
 public class Movement : MonoBehaviour 
 {
 	public float speed = 5.0f;
-	public float jumpSpeed = 500.0f;
-	public Vector3 moveDirection = Vector3.zero;
+	public float jumpSpeed = 5.0f;
+	public float gravity = -.1f;
+	
+	public float currentGravity = 0;
+	public Vector2 moveDirection = Vector2.zero;
+	public Vector2 jumpDirection = Vector2.zero;
 	public bool isGrounded = false;
 	public bool isJumping = false;
 	public bool inAir = false;
@@ -13,17 +17,28 @@ public class Movement : MonoBehaviour
 	
 	void FixedUpdate() 
 	{
-		if (!isGrounded)
+		// check if grounded by raycasting down half the size of the collider height
+		Ray floorRay = new Ray(transform.position, Vector3.down);
+		RaycastHit floorHit;
+		moveDirection = Vector2.zero;
+		if (Physics.Raycast(floorRay, out floorHit, this.collider.bounds.extents.y + .1f))
 		{
-			// check if grounded by raycasting down half the size of the collider height
-			if (Physics.Raycast(transform.position, -transform.up, this.collider.bounds.size.y/2))
+			if (floorHit.collider.gameObject.CompareTag("Solid"))
 			{
+				Debug.DrawLine(floorRay.origin, floorHit.point, Color.magenta);
+				transform.position = new Vector3(transform.position.x, floorHit.point.y + this.collider.bounds.extents.y, 0);
 				isGrounded = true;
 				isJumping = false;
 				inAir = false;
+				currentGravity = 0;
 			}
-			else if (!inAir)
-				inAir = true;
+		}
+		// we're not grounded so we must be in air or falling
+		else if (!inAir)
+		{
+			inAir = true;
+			isGrounded = false;
+			currentGravity = gravity;
 		}
 		
 		Move(); 
@@ -31,29 +46,29 @@ public class Movement : MonoBehaviour
 	
 	void Move()
 	{
+		moveDirection = Vector3.zero;
+		
 		// moving left or right
-		if (Input.GetAxis("Horizontal") != 0)
-			moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), moveDirection.y, 0);
+		if (Input.GetAxis("Horizontal") != 0) 
+		{
+			moveDirection += new Vector2(Input.GetAxisRaw("Horizontal"), moveDirection.y) * speed;	
+		}
 		
 		// jumping while grounded
 		if (Input.GetButton("Jump") && isGrounded)
 		{
 			isJumping = true;
-			rigidbody.AddForce((transform.up) * jumpSpeed);
+			isGrounded = false;
+			jumpDirection = new Vector3(0, jumpSpeed);
 		}
 		
-		this.transform.Translate(moveDirection.normalized * speed * Time.deltaTime);
-	}
-	
-	void OnCollisionStay(Collision collisionInfo)
-	{
-		contact = collisionInfo.contacts[0];
-		if (inAir || isJumping)
-			rigidbody.AddForceAtPosition(-rigidbody.velocity, contact.point); 
-	}
-	
-	void OnCollisionExit(Collision collisionInfo)
-	{
-		isGrounded = false; // left the collision of the ground
+		if (isJumping || inAir)
+		{
+			jumpDirection += new Vector2(0, currentGravity);
+			moveDirection += jumpDirection;
+		}
+		
+		// move
+		this.transform.Translate(moveDirection * Time.deltaTime);
 	}
 }
