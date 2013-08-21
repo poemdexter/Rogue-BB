@@ -67,7 +67,10 @@ public class Movement : MonoBehaviour
 			jumpDirection += new Vector2(0, currentGravity);
 			moveDirection += jumpDirection;
 		}
-		
+	}
+	
+	void Update()
+	{
 		// move
 		this.transform.Translate(moveDirection * Time.deltaTime);
 	}
