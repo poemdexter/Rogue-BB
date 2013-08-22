@@ -391,6 +391,7 @@ GameObject:
   - 114: {fileID: 1419691490}
   - 114: {fileID: 1419691495}
   - 65: {fileID: 1419691496}
+  - 114: {fileID: 1419691494}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -412,8 +413,8 @@ MonoBehaviour:
   collection: {fileID: 11400000, guid: 8d9f58fdd2f227f488e55e03d5c31e4b, type: 2}
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
-  _spriteId: 0
-  boxCollider: {fileID: 0}
+  _spriteId: 3
+  boxCollider: {fileID: 1419691496}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
@@ -450,10 +451,22 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1419691489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 6.81679535, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &1419691494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1419691489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52014f379958654dbc9e2b0bb80f148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingRight: 1
 --- !u!114 &1419691495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,5 +497,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4000001, y: 2.4000001, z: 0}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.39999998, y: 3.20000005, z: .200000003}
+  m_Center: {x: -5.96046448e-08, y: 0, z: 0}
