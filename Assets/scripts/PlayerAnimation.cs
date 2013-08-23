@@ -7,9 +7,10 @@ public class PlayerAnimation : MonoBehaviour {
 	
 	void Update () 
 	{
-		if (Input.GetAxis("Horizontal") != 0) 
+		float xAxis = Input.GetAxis("Horizontal");
+		if (xAxis != 0) 
 		{
-			if (Input.GetAxisRaw("Horizontal") > 0) 
+			if (xAxis > 0) 
 				GetComponent<tk2dSprite>().FlipX = false;
 			else 
 				GetComponent<tk2dSprite>().FlipX = true;
