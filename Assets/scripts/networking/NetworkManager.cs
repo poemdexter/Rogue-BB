@@ -5,7 +5,8 @@ public class NetworkManager : MonoBehaviour {
 	
 	public string gameName = "BB_Rogue_1";
 	public GameObject playerPrefab;
-	public Transform spawnPoint;
+	public Transform spawnPoint_1;
+	public Transform spawnPoint_2;
 	
 	private bool hostsRefreshing;
 	private bool hostsUpdated;
@@ -44,7 +45,7 @@ public class NetworkManager : MonoBehaviour {
 	
 	void StartServer()
 	{
-		Network.InitializeServer(4, 9001, !Network.HavePublicAddress());
+		Network.InitializeServer(2, 9001, !Network.HavePublicAddress());
 		MasterServer.RegisterHost(gameName, "Rogue BB Test", "poem's game");
 	}
 
@@ -78,16 +79,20 @@ public class NetworkManager : MonoBehaviour {
 	void OnServerInitialized()
 	{
 		Debug.Log("Server Initialized");
-		SpawnPlayer();
+		SpawnPlayer(1);
 	}
 	
 	void OnConnectedToServer()
 	{
-		SpawnPlayer();
+		Debug.Log("Player Connected");
+		SpawnPlayer(2);
 	}
 	
-	void SpawnPlayer()
+	void SpawnPlayer(int playerNum)
 	{
-		Network.Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity, 0);
+		if (playerNum == 1)
+			Network.Instantiate(playerPrefab, spawnPoint_1.position, Quaternion.identity, 0);
+		else if (playerNum == 2)
+			Network.Instantiate(playerPrefab, spawnPoint_2.position, Quaternion.identity, 0);
 	}
 }
