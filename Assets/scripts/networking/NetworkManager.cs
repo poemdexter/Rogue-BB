@@ -2,14 +2,92 @@
 using System.Collections;
 
 public class NetworkManager : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
 	
+	public string gameName = "BB_Rogue_1";
+	public GameObject playerPrefab;
+	public Transform spawnPoint;
+	
+	private bool hostsRefreshing;
+	private bool hostsUpdated;
+	private HostData[] hostDataList;
+	
+	void Start()
+	{
+		hostDataList = new HostData[] {};
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	void OnGUI()
+	{
+		if (!Network.isServer && !Network.isClient)
+		{
+			if(GUILayout.Button("Start Server"))
+			{
+				Debug.Log("Starting Server");
+				StartServer();
+			}
+			
+			if(GUILayout.Button("Refresh Hosts"))
+			{
+				Debug.Log("Requesting Hosts...");
+				RefreshHostsList();
+			}
+			
+			foreach(HostData host in hostDataList)
+			{
+				if(GUILayout.Button(host.comment))
+				{
+					Network.Connect(host);
+				}
+			}
+		}
+	}
 	
+	void StartServer()
+	{
+		Network.InitializeServer(4, 9001, !Network.HavePublicAddress());
+		MasterServer.RegisterHost(gameName, "Rogue BB Test", "poem's game");
+	}
+
+	void RefreshHostsList()
+	{
+		MasterServer.RequestHostList(gameName);
+		hostsRefreshing = true;
+		hostsUpdated = false;
+	}
+	
+	void Update()
+	{
+		if (hostsRefreshing && hostsUpdated)
+		{
+			hostsRefreshing = false;
+			hostsUpdated = false;
+			Debug.Log("Found " + MasterServer.PollHostList().Length);
+			hostDataList = MasterServer.PollHostList();
+		}
+	}
+	
+	void OnMasterServerEvent(MasterServerEvent msEvent) 
+	{
+		if(msEvent == MasterServerEvent.RegistrationSucceeded)
+			Debug.Log("Server Registered");
+		
+		if(msEvent == MasterServerEvent.HostListReceived)
+			hostsUpdated = true;
+	}
+	
+	void OnServerInitialized()
+	{
+		Debug.Log("Server Initialized");
+		SpawnPlayer();
+	}
+	
+	void OnConnectedToServer()
+	{
+		SpawnPlayer();
+	}
+	
+	void SpawnPlayer()
+	{
+		Network.Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity, 0);
 	}
 }
