@@ -20,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
 		// check if grounded by raycasting down half the size of the collider height
 		Ray floorRay = new Ray(transform.position, Vector3.down);
 		RaycastHit floorHit;
-		moveDirection = Vector2.zero;
 		if (Physics.Raycast(floorRay, out floorHit, this.collider.bounds.extents.y + .1f))
 		{
 			if (floorHit.collider.gameObject.CompareTag("Solid"))
@@ -46,12 +45,18 @@ public class PlayerMovement : MonoBehaviour
 	
 	void Move()
 	{
-		moveDirection = Vector3.zero;
+		moveDirection = Vector2.zero;
 		
 		// moving left or right
-		if (Input.GetAxis("Horizontal") != 0) 
+		float horizInput = Input.GetAxis("Horizontal");
+		if (horizInput != 0) 
 		{
-			moveDirection += new Vector2(Input.GetAxisRaw("Horizontal"), moveDirection.y) * speed;	
+			if (horizInput > 0 && !RaycastCollideRightWall())
+				moveDirection += new Vector2(Input.GetAxisRaw("Horizontal"), moveDirection.y) * speed;
+			
+			if (horizInput < 0 && !RaycastCollideLeftWall())
+				moveDirection += new Vector2(Input.GetAxisRaw("Horizontal"), moveDirection.y) * speed;
+			
 		}
 		
 		// jumping while grounded
@@ -67,6 +72,40 @@ public class PlayerMovement : MonoBehaviour
 			jumpDirection += new Vector2(0, currentGravity);
 			moveDirection += jumpDirection;
 		}
+	}
+	
+	bool RaycastCollideRightWall()
+	{
+		// check if we're hitting right wall
+		Ray rWallRay = new Ray(transform.position, Vector3.right);
+		RaycastHit rWallHit;
+		if (Physics.Raycast(rWallRay, out rWallHit, this.collider.bounds.extents.x + .1f))
+		{
+			if (rWallHit.collider.gameObject.CompareTag("Solid"))
+			{
+				Debug.DrawLine(rWallRay.origin, rWallHit.point, Color.magenta);
+				transform.position = new Vector3(rWallHit.point.x - this.collider.bounds.extents.x, transform.position.y, 0);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	bool RaycastCollideLeftWall()
+	{
+		// check if we're hitting right wall
+		Ray lWallRay = new Ray(transform.position, Vector3.left);
+		RaycastHit lWallHit;
+		if (Physics.Raycast(lWallRay, out lWallHit, this.collider.bounds.extents.x + .1f))
+		{
+			if (lWallHit.collider.gameObject.CompareTag("Solid"))
+			{
+				Debug.DrawLine(lWallRay.origin, lWallHit.point, Color.magenta);
+				transform.position = new Vector3(lWallHit.point.x + this.collider.bounds.extents.x, transform.position.y, 0);
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	void Update()

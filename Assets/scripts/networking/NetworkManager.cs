@@ -95,4 +95,11 @@ public class NetworkManager : MonoBehaviour {
 		else if (playerNum == 2)
 			Network.Instantiate(playerPrefab, spawnPoint_2.position, Quaternion.identity, 0);
 	}
+	
+	void OnPlayerDisconnected (NetworkPlayer player)
+	{
+		Debug.Log("player disconnected");
+		Network.RemoveRPCs(player, 0);
+		Network.DestroyPlayerObjects(player);
+	}
 }
