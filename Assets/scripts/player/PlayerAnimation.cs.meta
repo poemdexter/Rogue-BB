@@ -2,7 +2,11 @@ fileFormatVersion: 2
 guid: e52014f379958654dbc9e2b0bb80f148
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bloods: {fileID: 19800000, guid: c38933349e5d80040be700636e99faca, type: 2}
+  - piss: {fileID: 19800000, guid: 9960ba07c29825141a69216a89a61d64, type: 2}
+  - barfs: {fileID: 19800000, guid: fb28c6d8bcf55574db16b36087d41876, type: 2}
+  - shits: {fileID: 19800000, guid: c280c7b2262295e42bd18a9e4c7bfe49, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
