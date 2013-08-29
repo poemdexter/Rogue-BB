@@ -17,37 +17,33 @@ public class PlayerMovement : MonoBehaviour
 	
 	void FixedUpdate() 
 	{
-		if (networkView.isMine)
+		// check if grounded by raycasting down half the size of the collider height
+		Ray floorRay = new Ray(transform.position, Vector3.down);
+		RaycastHit floorHit;
+		moveDirection = Vector2.zero;
+		if (Physics.Raycast(floorRay, out floorHit, this.collider.bounds.extents.y + .1f))
 		{
-			// check if grounded by raycasting down half the size of the collider height
-			Ray floorRay = new Ray(transform.position, Vector3.down);
-			RaycastHit floorHit;
-			moveDirection = Vector2.zero;
-			if (Physics.Raycast(floorRay, out floorHit, this.collider.bounds.extents.y + .1f))
+			if (floorHit.collider.gameObject.CompareTag("Solid"))
 			{
-				if (floorHit.collider.gameObject.CompareTag("Solid"))
-				{
-					Debug.DrawLine(floorRay.origin, floorHit.point, Color.magenta);
-					transform.position = new Vector3(transform.position.x, floorHit.point.y + this.collider.bounds.extents.y, 0);
-					isGrounded = true;
-					isJumping = false;
-					inAir = false;
-					currentGravity = 0;
-				}
+				Debug.DrawLine(floorRay.origin, floorHit.point, Color.magenta);
+				transform.position = new Vector3(transform.position.x, floorHit.point.y + this.collider.bounds.extents.y, 0);
+				isGrounded = true;
+				isJumping = false;
+				inAir = false;
+				currentGravity = 0;
 			}
-			// we're not grounded so we must be in air or falling
-			else if (!inAir)
-			{
-				inAir = true;
-				isGrounded = false;
-				currentGravity = gravity;
-			}
-			
-			Move(); 
 		}
+		// we're not grounded so we must be in air or falling
+		else if (!inAir)
+		{
+			inAir = true;
+			isGrounded = false;
+			currentGravity = gravity;
+		}
+		
+		Move(); 
 	}
 	
-	// only occurs if networkView.isMine
 	void Move()
 	{
 		moveDirection = Vector3.zero;
@@ -76,7 +72,6 @@ public class PlayerMovement : MonoBehaviour
 	void Update()
 	{
 		// move
-		if (networkView.isMine)
-			transform.Translate(moveDirection * Time.deltaTime);
+		this.transform.Translate(moveDirection * Time.deltaTime);
 	}
 }
