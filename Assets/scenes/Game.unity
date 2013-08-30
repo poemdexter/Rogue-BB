@@ -171,7 +171,7 @@ MonoBehaviour:
   viewportRegion: {x: 0, y: 0, z: 100, w: 100}
   zoomFactor: 1
   forceResolutionInEditor: 1
-  forceResolution: {x: 10, y: 10}
+  forceResolution: {x: 1024, y: 768}
 --- !u!20 &186798925
 Camera:
   m_ObjectHideFlags: 3
@@ -329,7 +329,7 @@ GameObject:
   - 114: {fileID: 376648893}
   - 65: {fileID: 376648892}
   m_Layer: 0
-  m_Name: Platform
+  m_Name: FloorAndWalls
   m_TagString: Solid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -402,7 +402,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 376648891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .139949799, y: -4.37991524, z: 0}
+  m_LocalPosition: {x: .139949799, y: -4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1474537494}
@@ -447,7 +447,7 @@ GameObject:
   - 114: {fileID: 793260055}
   - 65: {fileID: 793260054}
   m_Layer: 0
-  m_Name: Platform
+  m_Name: SpawnPlatform
   m_TagString: Solid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -520,7 +520,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 793260053}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.31676161, y: .972651482, z: 0}
+  m_LocalPosition: {x: 0, y: 1.10000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 786510799}

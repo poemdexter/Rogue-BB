@@ -129,6 +129,10 @@ MonoBehaviour:
   isGrounded: 0
   isJumping: 0
   inAir: 0
+  floorRayLeftOffset: {x: -.5, y: 0, z: 0}
+  floorRayRightOffset: {x: .5, y: 0, z: 0}
+  wallRayTopOffset: {x: 0, y: 1.20000005, z: 0}
+  wallRayBottomOffset: {x: 0, y: -1.20000005, z: 0}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
