@@ -14,15 +14,12 @@ public class PlayerMovement : MonoBehaviour
 	public bool isJumping = false;
 	public bool inAir = false;
     public bool isHorizontalMoving = false;
-    public bool isThrowing = false;
 	public ContactPoint contact;
 	
 	public Vector3 floorRayLeftOffset = Vector3.zero;
 	public Vector3 floorRayRightOffset = Vector3.zero;
 	public Vector3 wallRayTopOffset = Vector3.zero;
 	public Vector3 wallRayBottomOffset = Vector3.zero;
-
-    private tk2dSpriteAnimator animator;
 	
 	private enum RaycastDirection
 	{
@@ -32,9 +29,11 @@ public class PlayerMovement : MonoBehaviour
 		Right
 	}
 
-    void Start()
+    public struct Movement
     {
-        animator = GetComponent<tk2dSpriteAnimator>();
+        public bool jumping;
+        public bool inAir;
+        public bool moveHorizontal;
     }
 	
 	void FixedUpdate() 
@@ -42,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 		DebugRays();
 		
 		// check collision head
-		if (checkIfGrounded()) 
+		if (CheckIfGrounded())
 		{
 			isGrounded = true;
 			isJumping = false;
@@ -62,11 +61,29 @@ public class PlayerMovement : MonoBehaviour
 		// move
 		transform.Translate(moveDirection * Time.deltaTime);
 
-        // handle Animations
-        HandleMovementAnimations();
+        HandleAnimations();
 	}
+
+    void Update()
+    {
+        // need to sync this and set owner
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            SendMessage("FireBloodParticles");
+            networkView.RPC("FireBloodParticles", RPCMode.Others);
+        }
+    }
+
+    void HandleAnimations()
+    {
+        Movement m;
+        m.jumping = isJumping;
+        m.inAir = inAir;
+        m.moveHorizontal = isHorizontalMoving;
+        SendMessage("HandleMovementAnimations", m);
+    }
 	
-	bool checkIfGrounded()
+	bool CheckIfGrounded()
 	{
 		return RaycastCollideVertical(RaycastDirection.Down);
 	}
@@ -103,13 +120,6 @@ public class PlayerMovement : MonoBehaviour
 
         isHorizontalMoving = (moveDirection.x != 0) ? true : false;
 	}
-
-    void HandleMovementAnimations()
-    {
-        if (isJumping || inAir) animator.Play("jump");
-        else if (isHorizontalMoving) animator.Play("walk");
-        else animator.Play("still");
-    }
 
 	bool RaycastCollideVertical(RaycastDirection direction)
 	{
