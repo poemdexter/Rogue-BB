@@ -3,13 +3,13 @@ using System.Collections;
 
 public class PlayerAnimation : MonoBehaviour {
 	
-	public bool facingRight = true;
+	public bool isLookingLeft = false;
 	
 	public ParticleSystem bloods;
 	public ParticleSystem piss;
 	public ParticleSystem barfs;
 	public ParticleSystem shits;
-	
+
 	void Update () 
 	{
 		if (networkView.isMine)
@@ -17,15 +17,17 @@ public class PlayerAnimation : MonoBehaviour {
 			float xAxis = Input.GetAxis("Horizontal");
 			if (xAxis != 0) 
 			{
-				if (xAxis > 0) 
+				if (xAxis > 0 && isLookingLeft == true)
 				{
 					GetComponent<tk2dSprite>().FlipX = false;
-					networkView.RPC("MakeSpriteFaceRight", RPCMode.Others, false);
+					networkView.RPC("MakeSpriteFaceLeft", RPCMode.Others, false);
+                    isLookingLeft = false;
 				}
-				else 
+				else if (xAxis < 0 && isLookingLeft == false)
 				{
 					GetComponent<tk2dSprite>().FlipX = true;
-					networkView.RPC("MakeSpriteFaceRight", RPCMode.Others, true);
+					networkView.RPC("MakeSpriteFaceLeft", RPCMode.Others, true);
+                    isLookingLeft = true;
 				}	
 			}
 			
@@ -53,9 +55,9 @@ public class PlayerAnimation : MonoBehaviour {
 	}
 	
 	[RPC]
-	void MakeSpriteFaceRight(bool right)
+	void MakeSpriteFaceLeft(bool left)
 	{
-		GetComponent<tk2dSprite>().FlipX = right;
+		GetComponent<tk2dSprite>().FlipX = left;
 	}
 	
 	[RPC]
