@@ -61,15 +61,15 @@ MonoBehaviour:
   atlasWidth: 128
   atlasHeight: 128
   forceSquareAtlas: 0
-  atlasWastage: 34.1308594
+  atlasWastage: 42.175293
   allowMultipleAtlases: 0
   removeDuplicates: 1
   textureParams:
-  - name: rogue_stand
+  - name: 
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 2800000, guid: 2ef93a23c160bb040a2b3d291ca8ff23, type: 3}
+    texture: {fileID: 0}
     materialId: 0
     anchor: 4
     anchorX: 0
@@ -95,9 +95,9 @@ MonoBehaviour:
     regionW: 0
     regionH: 0
     regionId: 0
-    colliderType: 3
-    boxColliderMin: {x: 6, y: 0}
-    boxColliderMax: {x: 42, y: 48}
+    colliderType: 0
+    boxColliderMin: {x: 0, y: 0}
+    boxColliderMax: {x: 0, y: 0}
     polyColliderIslands: []
     polyColliderCap: 1
     colliderConvex: 0
@@ -182,11 +182,11 @@ MonoBehaviour:
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
     attachPoints: []
-  - name: red_stand_old
+  - name: 
     disableTrimming: 0
     additive: 0
-    scale: {x: 2, y: 2, z: 1}
-    texture: {fileID: 2800000, guid: bcb3a7a73c31cff458307fa034fe46f1, type: 3}
+    scale: {x: 1, y: 1, z: 1}
+    texture: {fileID: 0}
     materialId: 0
     anchor: 4
     anchorX: 0
@@ -212,20 +212,20 @@ MonoBehaviour:
     regionW: 0
     regionH: 0
     regionId: 0
-    colliderType: 3
-    boxColliderMin: {x: 5, y: 0}
-    boxColliderMax: {x: 19, y: 32}
+    colliderType: 0
+    boxColliderMin: {x: 0, y: 0}
+    boxColliderMax: {x: 0, y: 0}
     polyColliderIslands: []
     polyColliderCap: 1
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
     attachPoints: []
-  - name: blu_stand
+  - name: 
     disableTrimming: 0
     additive: 0
-    scale: {x: 2, y: 2, z: 1}
-    texture: {fileID: 2800000, guid: c5b6a39d800a3974f9e0bdf9c9809a00, type: 3}
+    scale: {x: 1, y: 1, z: 1}
+    texture: {fileID: 0}
     materialId: 0
     anchor: 4
     anchorX: 0
@@ -251,9 +251,9 @@ MonoBehaviour:
     regionW: 0
     regionH: 0
     regionId: 0
-    colliderType: 3
-    boxColliderMin: {x: 5, y: 0}
-    boxColliderMax: {x: 19, y: 32}
+    colliderType: 0
+    boxColliderMin: {x: 0, y: 0}
+    boxColliderMax: {x: 0, y: 0}
     polyColliderIslands: []
     polyColliderCap: 1
     colliderConvex: 0
@@ -505,6 +505,279 @@ MonoBehaviour:
     additive: 0
     scale: {x: 3, y: 3, z: 1}
     texture: {fileID: 2800000, guid: f72a43f0d9395ca4ebdfc1f3af32ff02, type: 3}
+    materialId: 0
+    anchor: 9
+    anchorX: 11
+    anchorY: 19
+    overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
+    customSpriteGeometry: 0
+    geometryIslands: []
+    dice: 0
+    diceUnitX: 64
+    diceUnitY: 64
+    pad: 0
+    extraPadding: 0
+    source: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 0
+    spriteSheetId: 0
+    spriteSheetX: 0
+    spriteSheetY: 0
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    regionId: 0
+    colliderType: 3
+    boxColliderMin: {x: 5, y: 6}
+    boxColliderMax: {x: 17, y: 32}
+    polyColliderIslands: []
+    polyColliderCap: 1
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    colliderColor: 0
+    attachPoints: []
+  - name: grn_jump
+    disableTrimming: 0
+    additive: 0
+    scale: {x: 3, y: 3, z: 1}
+    texture: {fileID: 2800000, guid: 150a07f69179a1c479c0ed80049edb2c, type: 3}
+    materialId: 0
+    anchor: 9
+    anchorX: 11
+    anchorY: 18
+    overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
+    customSpriteGeometry: 0
+    geometryIslands: []
+    dice: 0
+    diceUnitX: 64
+    diceUnitY: 64
+    pad: 0
+    extraPadding: 0
+    source: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 0
+    spriteSheetId: 0
+    spriteSheetX: 0
+    spriteSheetY: 0
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    regionId: 0
+    colliderType: 3
+    boxColliderMin: {x: 5, y: 5}
+    boxColliderMax: {x: 17, y: 31}
+    polyColliderIslands: []
+    polyColliderCap: 1
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    colliderColor: 0
+    attachPoints: []
+  - name: grn_walk
+    disableTrimming: 0
+    additive: 0
+    scale: {x: 3, y: 3, z: 1}
+    texture: {fileID: 2800000, guid: 6fc4b82a868b1754a9a2dc62ed814edb, type: 3}
+    materialId: 0
+    anchor: 9
+    anchorX: 11
+    anchorY: 19
+    overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
+    customSpriteGeometry: 0
+    geometryIslands: []
+    dice: 0
+    diceUnitX: 64
+    diceUnitY: 64
+    pad: 0
+    extraPadding: 0
+    source: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 0
+    spriteSheetId: 0
+    spriteSheetX: 0
+    spriteSheetY: 0
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    regionId: 0
+    colliderType: 3
+    boxColliderMin: {x: 5, y: 6}
+    boxColliderMax: {x: 17, y: 32}
+    polyColliderIslands: []
+    polyColliderCap: 1
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    colliderColor: 0
+    attachPoints: []
+  - name: grn_knife
+    disableTrimming: 0
+    additive: 0
+    scale: {x: 3, y: 3, z: 1}
+    texture: {fileID: 2800000, guid: 74dbf644297421f42949d339fe4da5e7, type: 3}
+    materialId: 0
+    anchor: 4
+    anchorX: 0
+    anchorY: 0
+    overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
+    customSpriteGeometry: 0
+    geometryIslands: []
+    dice: 0
+    diceUnitX: 64
+    diceUnitY: 64
+    pad: 0
+    extraPadding: 0
+    source: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 0
+    spriteSheetId: 0
+    spriteSheetX: 0
+    spriteSheetY: 0
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    regionId: 0
+    colliderType: 2
+    boxColliderMin: {x: 0, y: 0}
+    boxColliderMax: {x: 0, y: 0}
+    polyColliderIslands: []
+    polyColliderCap: 1
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    colliderColor: 0
+    attachPoints: []
+  - name: grn_throw1
+    disableTrimming: 0
+    additive: 0
+    scale: {x: 3, y: 3, z: 1}
+    texture: {fileID: 2800000, guid: 791dd7f71fe0d5c43a949e4e193fb4c9, type: 3}
+    materialId: 0
+    anchor: 9
+    anchorX: 11
+    anchorY: 19
+    overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
+    customSpriteGeometry: 0
+    geometryIslands: []
+    dice: 0
+    diceUnitX: 64
+    diceUnitY: 64
+    pad: 0
+    extraPadding: 0
+    source: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 0
+    spriteSheetId: 0
+    spriteSheetX: 0
+    spriteSheetY: 0
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    regionId: 0
+    colliderType: 3
+    boxColliderMin: {x: 5, y: 6}
+    boxColliderMax: {x: 17, y: 32}
+    polyColliderIslands: []
+    polyColliderCap: 1
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    colliderColor: 0
+    attachPoints: []
+  - name: grn_slice
+    disableTrimming: 0
+    additive: 0
+    scale: {x: 3, y: 3, z: 1}
+    texture: {fileID: 2800000, guid: 83dde09f131a3ab40a18509448acec4b, type: 3}
+    materialId: 0
+    anchor: 9
+    anchorX: 11
+    anchorY: 19
+    overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
+    customSpriteGeometry: 0
+    geometryIslands: []
+    dice: 0
+    diceUnitX: 64
+    diceUnitY: 64
+    pad: 0
+    extraPadding: 0
+    source: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 0
+    spriteSheetId: 0
+    spriteSheetX: 0
+    spriteSheetY: 0
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    regionId: 0
+    colliderType: 3
+    boxColliderMin: {x: 5, y: 6}
+    boxColliderMax: {x: 17, y: 32}
+    polyColliderIslands: []
+    polyColliderCap: 1
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    colliderColor: 0
+    attachPoints: []
+  - name: grn_throw2
+    disableTrimming: 0
+    additive: 0
+    scale: {x: 3, y: 3, z: 1}
+    texture: {fileID: 2800000, guid: dd3eccc412c59f744a5089714a05cda1, type: 3}
+    materialId: 0
+    anchor: 9
+    anchorX: 11
+    anchorY: 19
+    overrideMesh: {fileID: 0}
+    doubleSidedSprite: 0
+    customSpriteGeometry: 0
+    geometryIslands: []
+    dice: 0
+    diceUnitX: 64
+    diceUnitY: 64
+    pad: 0
+    extraPadding: 0
+    source: 0
+    fromSpriteSheet: 0
+    hasSpriteSheetId: 0
+    spriteSheetId: 0
+    spriteSheetX: 0
+    spriteSheetY: 0
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    regionId: 0
+    colliderType: 3
+    boxColliderMin: {x: 5, y: 6}
+    boxColliderMax: {x: 17, y: 32}
+    polyColliderIslands: []
+    polyColliderCap: 1
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    colliderColor: 0
+    attachPoints: []
+  - name: grn_stand
+    disableTrimming: 0
+    additive: 0
+    scale: {x: 3, y: 3, z: 1}
+    texture: {fileID: 2800000, guid: f99ca319ff1ddc249bb1ac329e7f8056, type: 3}
     materialId: 0
     anchor: 9
     anchorX: 11

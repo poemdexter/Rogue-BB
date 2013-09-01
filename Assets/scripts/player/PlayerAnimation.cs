@@ -16,6 +16,14 @@ public class PlayerAnimation : MonoBehaviour {
     void Start()
     {
         anim = GetComponent<tk2dSpriteAnimator>();
+        SwitchAnimationLibraryBasedOnPlayer();
+    }
+
+    // if we're player 2, we need different set of animations
+    void SwitchAnimationLibraryBasedOnPlayer()
+    {
+        if ((Network.isClient && networkView.isMine) || (Network.isServer && !networkView.isMine))
+            GetComponent<tk2dSpriteAnimator>().Library = Resources.Load("animations/PlayerTwoAnimations", typeof(tk2dSpriteAnimation)) as tk2dSpriteAnimation;
     }
 
     void ThrowCompleteDelegate(tk2dSpriteAnimator sprite, tk2dSpriteAnimationClip clip)
