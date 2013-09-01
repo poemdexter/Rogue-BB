@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e52014f379958654dbc9e2b0bb80f148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facingRight: 1
+  isLookingLeft: 0
   bloods: {fileID: 19800000, guid: c38933349e5d80040be700636e99faca, type: 2}
   piss: {fileID: 19800000, guid: 9960ba07c29825141a69216a89a61d64, type: 2}
   barfs: {fileID: 19800000, guid: fb28c6d8bcf55574db16b36087d41876, type: 2}
@@ -174,7 +174,7 @@ NetworkView:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_StateSynchronization: 1
+  m_StateSynchronization: 2
   m_Observed: {fileID: 11400008}
   m_ViewID:
     m_ID: 0

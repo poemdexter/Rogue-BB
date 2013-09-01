@@ -64,7 +64,7 @@ public class NetworkInterpolatedTransform : MonoBehaviour
 	}
 	
 	// This only runs where the component is enabled, which is only on remote peers (server/clients)
-	void Update () {
+	void FixedUpdate () {
 		double currentTime = Network.time;
 		double interpolationTime = currentTime - interpolationBackTime;
 		// We have a window of interpolationBackTime where we basically play 
