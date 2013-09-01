@@ -58,8 +58,9 @@ public class PlayerMovement : MonoBehaviour
 		
 		CalculateMoveDirection();
 
-		// move
-		transform.Translate(moveDirection * Time.deltaTime);
+		// move if local
+        if (networkView.isMine)
+            transform.Translate(moveDirection * Time.deltaTime);
 
         HandleAnimations();
 	}
