@@ -13,12 +13,16 @@ public class PlayerMovement : MonoBehaviour
 	public bool isGrounded = false;
 	public bool isJumping = false;
 	public bool inAir = false;
+    public bool isHorizontalMoving = false;
+    public bool isThrowing = false;
 	public ContactPoint contact;
 	
 	public Vector3 floorRayLeftOffset = Vector3.zero;
 	public Vector3 floorRayRightOffset = Vector3.zero;
 	public Vector3 wallRayTopOffset = Vector3.zero;
 	public Vector3 wallRayBottomOffset = Vector3.zero;
+
+    private tk2dSpriteAnimator animator;
 	
 	private enum RaycastDirection
 	{
@@ -27,12 +31,17 @@ public class PlayerMovement : MonoBehaviour
 		Left,
 		Right
 	}
+
+    void Start()
+    {
+        animator = GetComponent<tk2dSpriteAnimator>();
+    }
 	
 	void FixedUpdate() 
 	{
 		DebugRays();
 		
-		// check collision head or feet
+		// check collision head
 		if (checkIfGrounded()) 
 		{
 			isGrounded = true;
@@ -49,9 +58,12 @@ public class PlayerMovement : MonoBehaviour
 		}
 		
 		CalculateMoveDirection();
-		
+
 		// move
-		this.transform.Translate(moveDirection * Time.deltaTime);
+		transform.Translate(moveDirection * Time.deltaTime);
+
+        // handle Animations
+        HandleMovementAnimations();
 	}
 	
 	bool checkIfGrounded()
@@ -88,7 +100,16 @@ public class PlayerMovement : MonoBehaviour
 			jumpDirection += new Vector2(0, currentGravity);
 			moveDirection += jumpDirection;
 		}
+
+        isHorizontalMoving = (moveDirection.x != 0) ? true : false;
 	}
+
+    void HandleMovementAnimations()
+    {
+        if (isJumping || inAir) animator.Play("jump");
+        else if (isHorizontalMoving) animator.Play("walk");
+        else animator.Play("still");
+    }
 
 	bool RaycastCollideVertical(RaycastDirection direction)
 	{
@@ -139,16 +160,18 @@ public class PlayerMovement : MonoBehaviour
 	
 	bool RaycastCollideHorizontal(RaycastDirection direction)
 	{
-		Ray wallRay_T, wallRay_B;
+		Ray wallRay_T, wallRay_B, wallRay_M;
 		
 		if (direction == RaycastDirection.Right)
 		{
 			wallRay_T = new Ray(transform.position + wallRayTopOffset, Vector3.right);
+            wallRay_M = new Ray(transform.position, Vector3.right);
 			wallRay_B = new Ray(transform.position + wallRayBottomOffset, Vector3.right);
 		}
 		else if (direction == RaycastDirection.Left)
 		{
 			wallRay_T = new Ray(transform.position + wallRayTopOffset, Vector3.left);
+            wallRay_M = new Ray(transform.position, Vector3.left);
 			wallRay_B = new Ray(transform.position + wallRayBottomOffset, Vector3.left);
 		}
 		else
@@ -170,6 +193,18 @@ public class PlayerMovement : MonoBehaviour
 				return true;
 			}
 		}
+        else if (Physics.Raycast(wallRay_M, out wallHit, collider.bounds.extents.x + .1f))
+         {
+             if (wallHit.collider.gameObject.CompareTag("Solid"))
+             {
+                 if (direction == RaycastDirection.Right)
+                     transform.position = new Vector3(wallHit.point.x - collider.bounds.extents.x, transform.position.y, 0);
+                 else if (direction == RaycastDirection.Left)
+                     transform.position = new Vector3(wallHit.point.x + collider.bounds.extents.x, transform.position.y, 0);
+    
+                 return true;
+             }
+         }
 		else if (Physics.Raycast(wallRay_B, out wallHit, collider.bounds.extents.x + .1f))
 		{
 			if (wallHit.collider.gameObject.CompareTag("Solid"))
@@ -188,13 +223,17 @@ public class PlayerMovement : MonoBehaviour
 	void DebugRays()
 	{
 		Ray lWallRay_T = new Ray(transform.position + wallRayTopOffset, Vector3.left);
+        Ray lWallRay_M = new Ray(transform.position, Vector3.left);
 		Ray lWallRay_B = new Ray(transform.position + wallRayBottomOffset, Vector3.left);
 		Debug.DrawLine(lWallRay_T.origin, lWallRay_T.origin - new Vector3(this.collider.bounds.extents.x + .1f,0,0), Color.magenta);
+        Debug.DrawLine(lWallRay_M.origin, lWallRay_M.origin - new Vector3(this.collider.bounds.extents.x + .1f,0,0), Color.magenta);
 		Debug.DrawLine(lWallRay_B.origin, lWallRay_B.origin - new Vector3(this.collider.bounds.extents.x + .1f,0,0), Color.magenta);
 		
 		Ray rWallRay_T = new Ray(transform.position + wallRayTopOffset, Vector3.right);
+        Ray rWallRay_M = new Ray(transform.position, Vector3.right);
 		Ray rWallRay_B = new Ray(transform.position + wallRayBottomOffset, Vector3.right);
 		Debug.DrawLine(rWallRay_B.origin, rWallRay_B.origin + new Vector3(this.collider.bounds.extents.x + .1f,0,0), Color.magenta);
+        Debug.DrawLine(rWallRay_M.origin, rWallRay_M.origin + new Vector3(this.collider.bounds.extents.x + .1f,0,0), Color.magenta);
 		Debug.DrawLine(rWallRay_T.origin, rWallRay_T.origin + new Vector3(this.collider.bounds.extents.x + .1f,0,0), Color.magenta);
 		
 		Ray dfloorRay_L = new Ray(transform.position + floorRayLeftOffset, Vector3.down);

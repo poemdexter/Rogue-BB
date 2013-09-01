@@ -15,8 +15,9 @@ public class PlayerAnimation : MonoBehaviour {
 		if (networkView.isMine)
 		{
 			float xAxis = Input.GetAxis("Horizontal");
-			if (xAxis != 0) 
+			if (xAxis != 0) // we're moving
 			{
+                // face us the correct way
 				if (xAxis > 0 && isLookingLeft == true)
 				{
 					GetComponent<tk2dSprite>().FlipX = false;
@@ -28,7 +29,7 @@ public class PlayerAnimation : MonoBehaviour {
 					GetComponent<tk2dSprite>().FlipX = true;
 					networkView.RPC("MakeSpriteFaceLeft", RPCMode.Others, true);
                     isLookingLeft = true;
-				}	
+				}
 			}
 			
 			if (Input.GetKeyDown(KeyCode.Z))

@@ -18,6 +18,7 @@ GameObject:
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400008}
   - 114: {fileID: 11400010}
+  - 114: {fileID: 11400012}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -71,8 +72,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.39999998, y: 3.20000005, z: .200000003}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.4000001, y: 4.05000019, z: .200000003}
+  m_Center: {x: -5.96046448e-08, y: -.375, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -87,7 +88,7 @@ MonoBehaviour:
   collection: {fileID: 11400000, guid: 8d9f58fdd2f227f488e55e03d5c31e4b, type: 2}
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
-  _spriteId: 3
+  _spriteId: 11
   boxCollider: {fileID: 6500000}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
@@ -129,10 +130,12 @@ MonoBehaviour:
   isGrounded: 0
   isJumping: 0
   inAir: 0
-  floorRayLeftOffset: {x: -.5, y: 0, z: 0}
-  floorRayRightOffset: {x: .5, y: 0, z: 0}
-  wallRayTopOffset: {x: 0, y: 1.20000005, z: 0}
-  wallRayBottomOffset: {x: 0, y: -1.20000005, z: 0}
+  isHorizontalMoving: 0
+  isThrowing: 0
+  floorRayLeftOffset: {x: -.449999988, y: 0, z: 0}
+  floorRayRightOffset: {x: .600000024, y: 0, z: 0}
+  wallRayTopOffset: {x: 0, y: 1.89999998, z: 0}
+  wallRayBottomOffset: {x: 0, y: -1.64999998, z: 0}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -167,6 +170,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c5399755681ffd4e92fa4ba70958a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11400012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e54113e5604435b8ae87c7754f2725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  library: {fileID: 11400000, guid: d6f440d3f21765c44b48a9108b456d70, type: 2}
+  defaultClipId: 0
+  playAutomatically: 1
 --- !u!148 &14800000
 NetworkView:
   m_ObjectHideFlags: 1
