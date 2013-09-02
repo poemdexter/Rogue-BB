@@ -4,6 +4,10 @@
 TagManager:
   tags:
   - Solid
+  - PlayerOne
+  - PlayerTwo
+  - WeaponOne
+  - WeaponTwo
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

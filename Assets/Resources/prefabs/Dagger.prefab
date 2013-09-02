@@ -11,18 +11,13 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400004}
   - 65: {fileID: 6500000}
   - 114: {fileID: 11400002}
   - 148: {fileID: 14800000}
-  - 114: {fileID: 11400006}
-  - 114: {fileID: 11400008}
-  - 114: {fileID: 11400010}
-  - 114: {fileID: 11400012}
-  - 114: {fileID: 11400014}
+  - 114: {fileID: 11400004}
   m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
+  m_Name: Dagger
+  m_TagString: WeaponOne
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,8 +68,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.79999995, y: 3.9000001, z: .200000003}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.64999998, y: .75, z: .200000003}
+  m_Center: {x: .0749999881, y: -.0750000179, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,7 +84,7 @@ MonoBehaviour:
   collection: {fileID: 11400000, guid: 8d9f58fdd2f227f488e55e03d5c31e4b, type: 2}
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
-  _spriteId: 7
+  _spriteId: 14
   boxCollider: {fileID: 6500000}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
@@ -103,18 +98,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e52014f379958654dbc9e2b0bb80f148, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a49aa5844b7ce64a9ab7bd9f6f3323e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  remoteClip: still
-  prevRemoteClip: 
-  isLookingLeft: 0
-  isThrowing: 0
-  throwWait: 0
-  bloods: {fileID: 19800000, guid: c38933349e5d80040be700636e99faca, type: 2}
-  piss: {fileID: 19800000, guid: 9960ba07c29825141a69216a89a61d64, type: 2}
-  barfs: {fileID: 19800000, guid: fb28c6d8bcf55574db16b36087d41876, type: 2}
-  shits: {fileID: 19800000, guid: c280c7b2262295e42bd18a9e4c7bfe49, type: 2}
+  speed: 30
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,83 +110,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c91c643d90d7214bbaa50e4df5af56c, type: 3}
+  m_Script: {fileID: 11500000, guid: fe60870f3dbbc2a4a9410908f8217863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpSpeed: 20
-  gravity: -.699999988
-  currentGravity: 0
-  moveDirection: {x: 0, y: 0}
-  jumpDirection: {x: 0, y: 0}
-  isGrounded: 0
-  isJumping: 0
-  inAir: 0
-  isHorizontalMoving: 0
-  floorRayLeftOffset: {x: -.449999988, y: 0, z: 0}
-  floorRayRightOffset: {x: .600000024, y: 0, z: 0}
-  wallRayTopOffset: {x: 0, y: 1.89999998, z: 0}
-  wallRayBottomOffset: {x: 0, y: -1.64999998, z: 0}
---- !u!114 &11400006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6067d66557674418da61a3a436dd7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11400008
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53001c5d9ff78214a995231a7f1c9866, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interpolationBackTime: .10000000000000001
---- !u!114 &11400010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c5399755681ffd4e92fa4ba70958a43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11400012
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5e54113e5604435b8ae87c7754f2725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  library: {fileID: 11400000, guid: d6f440d3f21765c44b48a9108b456d70, type: 2}
-  defaultClipId: 0
-  playAutomatically: 1
---- !u!114 &11400014
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31184701daffd9f429b41dfd834aa5af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 100000, guid: ed768d2d461580647bcbad0b00f7f1d2, type: 2}
+  goingLeft: 0
 --- !u!148 &14800000
 NetworkView:
   m_ObjectHideFlags: 1
@@ -208,7 +122,7 @@ NetworkView:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_StateSynchronization: 1
-  m_Observed: {fileID: 11400008}
+  m_Observed: {fileID: 0}
   m_ViewID:
     m_ID: 0
     m_Type: 0

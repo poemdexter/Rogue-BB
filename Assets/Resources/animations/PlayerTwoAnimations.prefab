@@ -220,8 +220,8 @@ MonoBehaviour:
     - spriteCollection: {fileID: 11400000, guid: 8d9f58fdd2f227f488e55e03d5c31e4b,
         type: 2}
       spriteId: 17
-      triggerEvent: 0
-      eventInfo: 
+      triggerEvent: 1
+      eventInfo: spawnDagger
       eventInt: 0
       eventFloat: 0
     - spriteCollection: {fileID: 11400000, guid: 8d9f58fdd2f227f488e55e03d5c31e4b,

@@ -38,6 +38,12 @@ public class PlayerAnimation : MonoBehaviour {
         networkView.RPC("SetRemoteClip", RPCMode.Others, prevRemoteClip);
     }
 
+    // hit middle of the throw animation, so release the dagger!
+    void SpawnDaggerDelegate(tk2dSpriteAnimator sprite, tk2dSpriteAnimationClip clip, int frameNum)
+    {
+        SendMessage("HandleDaggerSpawning", isLookingLeft);
+    }
+
     // we're throwing now
     void StartThrowAnimation()
     {
@@ -56,6 +62,7 @@ public class PlayerAnimation : MonoBehaviour {
             {
                 clip = "throw";
                 anim.AnimationCompleted = ThrowCompleteDelegate;
+                anim.AnimationEventTriggered = SpawnDaggerDelegate;
                 throwWait = true;
                 anim.Play(clip);
                 networkView.RPC("SetRemoteClip", RPCMode.Others, clip);
