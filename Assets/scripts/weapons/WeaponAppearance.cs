@@ -7,6 +7,11 @@ public class WeaponAppearance : MonoBehaviour
 
     public void SetAppearance(bool goesLeft)
     {
+        // face it correct way
+        goingLeft = goesLeft;
+        if (goingLeft)  GetComponent<tk2dSprite>().FlipX = true;
+
+        // color it the correct way
         if (gameObject.tag == "WeaponOne") GetComponent<tk2dSprite>().SetSprite("red_knife");
         if (gameObject.tag == "WeaponTwo") GetComponent<tk2dSprite>().SetSprite("grn_knife");
     }

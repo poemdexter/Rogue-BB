@@ -32,7 +32,7 @@ public class PlayerThrowWeapon : MonoBehaviour {
     [RPC]
     void DoDaggerSpawn(Vector3 position, string weaponTag, bool goingLeft)
     {
-        weaponPrefab.tag = weaponTag;
+        weaponPrefab.tag = weaponTag; // tag it by owner
         weaponPrefab.GetComponent<WeaponAppearance>().SetAppearance(goingLeft);
         GameObject.Instantiate(weaponPrefab, position, Quaternion.identity);
     }
