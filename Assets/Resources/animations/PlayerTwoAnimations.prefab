@@ -71,28 +71,28 @@ MonoBehaviour:
       eventFloat: 0
     - spriteCollection: {fileID: 11400000, guid: 8d9f58fdd2f227f488e55e03d5c31e4b,
         type: 2}
-      spriteId: 11
+      spriteId: 18
       triggerEvent: 0
       eventInfo: 
       eventInt: 0
       eventFloat: 0
     - spriteCollection: {fileID: 11400000, guid: 8d9f58fdd2f227f488e55e03d5c31e4b,
         type: 2}
-      spriteId: 11
+      spriteId: 18
       triggerEvent: 0
       eventInfo: 
       eventInt: 0
       eventFloat: 0
     - spriteCollection: {fileID: 11400000, guid: 8d9f58fdd2f227f488e55e03d5c31e4b,
         type: 2}
-      spriteId: 11
+      spriteId: 18
       triggerEvent: 0
       eventInfo: 
       eventInt: 0
       eventFloat: 0
     - spriteCollection: {fileID: 11400000, guid: 8d9f58fdd2f227f488e55e03d5c31e4b,
         type: 2}
-      spriteId: 11
+      spriteId: 18
       triggerEvent: 0
       eventInfo: 
       eventInt: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
       eventFloat: 0
     fps: 30
     loopStart: 0
-    wrapMode: 0
+    wrapMode: 6
   - name: slice
     frames:
     - spriteCollection: {fileID: 11400000, guid: 8d9f58fdd2f227f488e55e03d5c31e4b,
@@ -158,7 +158,7 @@ MonoBehaviour:
       eventFloat: 0
     fps: 30
     loopStart: 0
-    wrapMode: 0
+    wrapMode: 2
   - name: throw
     frames:
     - spriteCollection: {fileID: 11400000, guid: 8d9f58fdd2f227f488e55e03d5c31e4b,
@@ -240,7 +240,7 @@ MonoBehaviour:
       eventFloat: 0
     fps: 30
     loopStart: 0
-    wrapMode: 0
+    wrapMode: 2
   - name: still
     frames:
     - spriteCollection: {fileID: 11400000, guid: 8d9f58fdd2f227f488e55e03d5c31e4b,
@@ -252,7 +252,7 @@ MonoBehaviour:
       eventFloat: 0
     fps: 30
     loopStart: 0
-    wrapMode: 0
+    wrapMode: 6
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -38,46 +38,40 @@ public class PlayerMovement : MonoBehaviour
 	
 	void FixedUpdate() 
 	{
-		DebugRays();
-		
-		// check collision head
-		if (CheckIfGrounded())
-		{
-			isGrounded = true;
-			isJumping = false;
-			inAir = false;
-			currentGravity = 0;
-			jumpDirection = Vector2.zero;
-		} 
-		else if (!inAir) // we're not grounded so we must be in air or falling
-		{
-			inAir = true;
-			isGrounded = false;
-			currentGravity = gravity;
-		}
-		
-		CalculateMoveDirection();
-
-		// move if local
         if (networkView.isMine)
-            transform.Translate(moveDirection * Time.deltaTime);
+        {
+    		DebugRays();
+    		
+    		// check collision head
+    		if (CheckIfGrounded())
+    		{
+    			isGrounded = true;
+    			isJumping = false;
+    			inAir = false;
+    			currentGravity = 0;
+    			jumpDirection = Vector2.zero;
+    		} 
+    		else if (!inAir) // we're not grounded so we must be in air or falling
+    		{
+    			inAir = true;
+    			isGrounded = false;
+    			currentGravity = gravity;
+    		}
+    		
+    		CalculateMoveDirection();
+    
+    		// move if local
+            if (networkView.isMine)
+                transform.Translate(moveDirection * Time.deltaTime);
+        }
 
         HandleAnimations();
 	}
 
-    void Update()
-    {
-        // need to sync this and set owner
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            SendMessage("FireBloodParticles");
-            networkView.RPC("FireBloodParticles", RPCMode.Others);
-        }
-    }
-
+    // even if this is remote, we'll call it as the message method handles networkview
     void HandleAnimations()
     {
-        Movement m;
+        Movement m = new Movement();
         m.jumping = isJumping;
         m.inAir = inAir;
         m.moveHorizontal = isHorizontalMoving;

@@ -19,6 +19,7 @@ GameObject:
   - 114: {fileID: 11400008}
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400012}
+  - 114: {fileID: 11400014}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -105,8 +106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e52014f379958654dbc9e2b0bb80f148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  remoteClip: 
+  prevRemoteClip: 
   isLookingLeft: 0
   isThrowing: 0
+  throwWait: 0
   bloods: {fileID: 19800000, guid: c38933349e5d80040be700636e99faca, type: 2}
   piss: {fileID: 19800000, guid: 9960ba07c29825141a69216a89a61d64, type: 2}
   barfs: {fileID: 19800000, guid: fb28c6d8bcf55574db16b36087d41876, type: 2}
@@ -184,6 +188,17 @@ MonoBehaviour:
   library: {fileID: 11400000, guid: d6f440d3f21765c44b48a9108b456d70, type: 2}
   defaultClipId: 0
   playAutomatically: 1
+--- !u!114 &11400014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31184701daffd9f429b41dfd834aa5af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!148 &14800000
 NetworkView:
   m_ObjectHideFlags: 1
