@@ -9,7 +9,10 @@ public class WeaponAppearance : MonoBehaviour
     {
         // face it correct way
         goingLeft = goesLeft;
-        if (goingLeft)  GetComponent<tk2dSprite>().FlipX = true;
+        if (goingLeft)
+            GetComponent<tk2dSprite>().FlipX = true;
+        else
+            GetComponent<tk2dSprite>().FlipX = false;
 
         // color it the correct way
         if (gameObject.tag == "WeaponOne") GetComponent<tk2dSprite>().SetSprite("red_knife");
