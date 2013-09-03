@@ -111,11 +111,11 @@ public class PlayerAnimation : MonoBehaviour {
 				}
 			}
 			
-//			if (Input.GetKeyDown(KeyCode.Z))
-//			{
-//				FireBloodParticles();
-//				networkView.RPC("FireBloodParticles", RPCMode.Others);
-//			}
+			if (Input.GetKeyDown(KeyCode.B))
+			{
+				FireBloodParticles();
+				networkView.RPC("FireBloodParticles", RPCMode.Others);
+			}
 		}
 	}
 	
