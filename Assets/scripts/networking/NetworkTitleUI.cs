@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NetworkManager : MonoBehaviour {
+public class NetworkTitleUI : MonoBehaviour {
 	
 	public string gameName = "BB_Rogue_1";
 	public GameObject playerPrefab;
@@ -16,54 +16,46 @@ public class NetworkManager : MonoBehaviour {
 	{
 		hostDataList = new HostData[] {};
 	}
-	
-	void OnGUI()
-	{
-		if (!Network.isServer && !Network.isClient)
-		{
-			if(GUILayout.Button("Start Server"))
-			{
-				Debug.Log("Starting Server");
-				StartServer();
-			}
-			
-			if(GUILayout.Button("Refresh Hosts"))
-			{
-				Debug.Log("Requesting Hosts...");
-				RefreshHostsList();
-			}
-			
-			foreach(HostData host in hostDataList)
-			{
-				if(GUILayout.Button(host.comment))
-				{
-					Network.Connect(host);
-				}
-			}
-		}
-	}
-	
+
+    // clicked 2P Host
 	void StartServer()
 	{
+        Debug.Log("Hosting...");
 		Network.InitializeServer(2, 9001, !Network.HavePublicAddress());
 		MasterServer.RegisterHost(gameName, "Rogue BB Test", "poem's game");
 	}
 
+    // clicked 2P Join
+    void StartClient()
+    {
+        Debug.Log("Joining...");
+        RefreshHostsList();
+    }
+
+    // starts the refresh hosts process
 	void RefreshHostsList()
 	{
 		MasterServer.RequestHostList(gameName);
 		hostsRefreshing = true;
 		hostsUpdated = false;
+        Debug.Log("Refreshing Hosts");
 	}
-	
+
+    // if we found hosts, connect to first
 	void Update()
 	{
 		if (hostsRefreshing && hostsUpdated)
 		{
 			hostsRefreshing = false;
 			hostsUpdated = false;
-			Debug.Log("Found " + MasterServer.PollHostList().Length);
 			hostDataList = MasterServer.PollHostList();
+            if (hostDataList.Length > 0)
+            {
+                Debug.Log ("Connecting to Host");
+                Network.Connect(hostDataList[0]);
+            }
+            else
+                Debug.Log("No Hosts Found");
 		}
 	}
 	
@@ -73,19 +65,20 @@ public class NetworkManager : MonoBehaviour {
 			Debug.Log("Server Registered");
 		
 		if(msEvent == MasterServerEvent.HostListReceived)
+            Debug.Log("Hosts Refreshed");
 			hostsUpdated = true;
 	}
 	
 	void OnServerInitialized()
 	{
 		Debug.Log("Server Initialized");
-		SpawnPlayer(1);
+		//SpawnPlayer(1);
 	}
 	
 	void OnConnectedToServer()
 	{
 		Debug.Log("Player Connected");
-		SpawnPlayer(2);
+		//SpawnPlayer(2);
 	}
 	
 	void SpawnPlayer(int playerNum)
