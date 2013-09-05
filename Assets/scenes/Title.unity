@@ -1548,14 +1548,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collection: {fileID: 11400000, guid: 8d9f58fdd2f227f488e55e03d5c31e4b, type: 2}
   _color: {r: 1, g: 1, b: 1, a: 1}
-  _scale: {x: 1, y: 1, z: 1}
+  _scale: {x: .5, y: .5, z: 1}
   _spriteId: 2
   boxCollider: {fileID: 0}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
   renderLayer: 0
-  _dimensions: {x: 96, y: 48}
+  _dimensions: {x: 120, y: 96}
   _anchor: 4
   _createBoxCollider: 0
 --- !u!23 &2096095889
