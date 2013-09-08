@@ -16,8 +16,6 @@ GameObject:
   - 114: {fileID: 11400002}
   - 148: {fileID: 14800000}
   - 114: {fileID: 11400006}
-  - 114: {fileID: 11400008}
-  - 114: {fileID: 11400010}
   - 114: {fileID: 11400012}
   - 114: {fileID: 11400014}
   - 54: {fileID: 5400000}
@@ -76,7 +74,7 @@ Rigidbody:
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 1
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!65 &6500000
@@ -167,29 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6067d66557674418da61a3a436dd7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11400008
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53001c5d9ff78214a995231a7f1c9866, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interpolationBackTime: .10000000000000001
---- !u!114 &11400010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c5399755681ffd4e92fa4ba70958a43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -224,7 +199,7 @@ NetworkView:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_StateSynchronization: 1
-  m_Observed: {fileID: 11400008}
+  m_Observed: {fileID: 0}
   m_ViewID:
     m_ID: 0
     m_Type: 0

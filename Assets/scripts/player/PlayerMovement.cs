@@ -38,44 +38,41 @@ public class PlayerMovement : MonoBehaviour
 	
 	void FixedUpdate() 
 	{
-        if (networkView.isMine)
-        {
-    		DebugRays();
-    		
-    		// check collision head
-    		if (CheckIfGrounded())
-    		{
-    			isGrounded = true;
-    			isJumping = false;
-    			inAir = false;
-    			currentGravity = 0;
-    			jumpDirection = Vector2.zero;
-    		} 
-    		else if (!inAir) // we're not grounded so we must be in air or falling
-    		{
-    			inAir = true;
-    			isGrounded = false;
-    			currentGravity = gravity;
-    		}
-    		
-    		CalculateMoveDirection();
-    
-    		// move if local
-            if (networkView.isMine)
-                transform.Translate(moveDirection * Time.deltaTime);
-        }
+        // draw the rays for collisions with environment
+		//DebugRays();
+		
+		// check collision head
+		if (CheckIfGrounded())
+		{
+			isGrounded = true;
+			isJumping = false;
+			inAir = false;
+			currentGravity = 0;
+			jumpDirection = Vector2.zero;
+		} 
+		else if (!inAir) // we're not grounded so we must be in air or falling
+		{
+			inAir = true;
+			isGrounded = false;
+			currentGravity = gravity;
+		}
+		
+		CalculateMoveDirection();
 
+        // move!
+        transform.Translate(moveDirection * Time.deltaTime);
+
+        // animate!
         HandleAnimations();
 	}
 
-    // even if this is remote, we'll call it as the message method handles networkview
     void HandleAnimations()
     {
         Movement m = new Movement();
         m.jumping = isJumping;
         m.inAir = inAir;
         m.moveHorizontal = isHorizontalMoving;
-        SendMessage("HandleMovementAnimations", m);
+        GetComponent<PlayerAnimation>().HandleMovementAnimations(m);
     }
 	
 	bool CheckIfGrounded()

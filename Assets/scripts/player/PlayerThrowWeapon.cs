@@ -7,32 +7,19 @@ public class PlayerThrowWeapon : MonoBehaviour {
 
 	void Update()
     {
-        if (networkView.isMine)
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                SendMessage("StartThrowAnimation"); // play throw animation
-            }
+            SendMessage("StartThrowAnimation"); // play throw animation
         }
     }
 
     void HandleDaggerSpawning(bool goesLeft)
     {
-        string daggerTag = "";
-
-        // spawn ours
-        if (gameObject.tag == "PlayerOne") daggerTag = "WeaponOne";
-        if (gameObject.tag == "PlayerTwo") daggerTag = "WeaponTwo";
-        DoDaggerSpawn(transform.position, daggerTag, goesLeft);
-
-        // tell other player to spawn theirs
-        networkView.RPC("DoDaggerSpawn", RPCMode.Others, transform.position, daggerTag, goesLeft);
+        DoDaggerSpawn(transform.position, goesLeft);
     }
 
-    [RPC]
-    void DoDaggerSpawn(Vector3 position, string weaponTag, bool goingLeft)
+    void DoDaggerSpawn(Vector3 position, bool goingLeft)
     {
-        weaponPrefab.tag = weaponTag; // tag it by owner
         weaponPrefab.GetComponent<WeaponAppearance>().SetAppearance(goingLeft);
         GameObject.Instantiate(weaponPrefab, position, Quaternion.identity);
     }
