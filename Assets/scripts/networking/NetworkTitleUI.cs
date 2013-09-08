@@ -11,10 +11,15 @@ public class NetworkTitleUI : MonoBehaviour {
 	private bool hostsRefreshing;
 	private bool hostsUpdated;
 	private HostData[] hostDataList;
-	
+
+    public bool debugSinglePlayer = false;
+
 	void Start()
 	{
 		hostDataList = new HostData[] {};
+
+        if (debugSinglePlayer)
+            StartServer();
 	}
 
     // clicked 2P Host
@@ -72,7 +77,8 @@ public class NetworkTitleUI : MonoBehaviour {
 	void OnServerInitialized()
 	{
 		Debug.Log("Server Initialized");
-		//SpawnPlayer(1);
+        if (debugSinglePlayer)
+            SpawnPlayer(1);
 	}
 	
 	void OnConnectedToServer()

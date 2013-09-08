@@ -7,6 +7,7 @@ public class BatMovement : MonoBehaviour
     public Dictionary<string, Vector3> diagonalMovement;
     public string currentDirection;
     public float speed = 15;
+
 	void Start()
     {
         diagonalMovement = new Dictionary<string, Vector3>();
@@ -14,7 +15,8 @@ public class BatMovement : MonoBehaviour
         diagonalMovement.Add("SE", new Vector3( 1,-1,0));
         diagonalMovement.Add("SW", new Vector3(-1,-1,0));
         diagonalMovement.Add("NW", new Vector3(-1, 1,0));
-        currentDirection = "SW";
+        List<string> keyList = new List<string>(diagonalMovement.Keys);
+        currentDirection = keyList[Random.Range(0,3)];
 	}
 
     void FixedUpdate()
@@ -42,11 +44,15 @@ public class BatMovement : MonoBehaviour
         {
             if (currentDirection == "NE") currentDirection = "NW";
             if (currentDirection == "SE") currentDirection = "SW";
+
+            GetComponent<tk2dSprite>().FlipX = true;
         }
         if (relativePosition1.x < 0 && relativePosition2.x < 0) // left
         {
             if (currentDirection == "NW") currentDirection = "NE";
             if (currentDirection == "SW") currentDirection = "SE";
+
+            GetComponent<tk2dSprite>().FlipX = false;
         }
         if (relativePosition1.y > 0 && relativePosition2.y > 0) // up
         {
