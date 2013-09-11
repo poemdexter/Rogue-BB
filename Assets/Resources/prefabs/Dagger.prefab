@@ -18,7 +18,7 @@ GameObject:
   - 54: {fileID: 5400000}
   m_Layer: 0
   m_Name: Dagger
-  m_TagString: WeaponOne
+  m_TagString: Dagger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,8 +84,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.64999998, y: .75, z: .200000003}
-  m_Center: {x: .0749999881, y: -.0750000179, z: 0}
+  m_Size: {x: -1.64999998, y: .75, z: .200000003}
+  m_Center: {x: -.0749999881, y: -.0750000179, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collection: {fileID: 11400000, guid: 8d9f58fdd2f227f488e55e03d5c31e4b, type: 2}
   _color: {r: 1, g: 1, b: 1, a: 1}
-  _scale: {x: 1, y: 1, z: 1}
+  _scale: {x: -1, y: 1, z: 1}
   _spriteId: 6
   boxCollider: {fileID: 6500000}
   meshCollider: {fileID: 0}
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe60870f3dbbc2a4a9410908f8217863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goingLeft: 0
+  goingLeft: 1
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

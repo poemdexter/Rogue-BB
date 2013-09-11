@@ -6,8 +6,7 @@ TagManager:
   - Solid
   - PlayerOne
   - PlayerTwo
-  - WeaponOne
-  - WeaponTwo
+  - Dagger
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
